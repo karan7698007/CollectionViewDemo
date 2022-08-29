@@ -31,7 +31,7 @@ extension MainCollectionCell : UITableViewDelegate,UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "NestedTblCell", for: indexPath) as? NestedTblCell else { return UITableViewCell()}
         cell.lblTxt.text = "index-\(indexPath.row)"
         cell.backgroundColor = (mainCellData?.arrTblContent?[indexPath.row].isSelected ?? false) ? .red : .white
-        self.backgroundColor = (mainCellData?.arrTblContent?[indexPath.row].isSelected ?? false) ? .red : .white
+        self.contentView.backgroundColor = (mainCellData?.arrTblContent?[indexPath.row].isSelected ?? false) ? .blue : .white
         return cell
     }
     

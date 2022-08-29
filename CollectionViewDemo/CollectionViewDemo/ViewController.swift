@@ -14,10 +14,10 @@ class ViewController: UIViewController {
     
     var arrMainData = [
         MainData(isCollectionSelected: false, arrTblContent: [InnerTableData(isSelected: false)]),
-        MainData(isCollectionSelected: false, arrTblContent: [InnerTableData(isSelected: false),InnerTableData(isSelected: false),InnerTableData(isSelected: false),InnerTableData(isSelected: false)]),
-        MainData(isCollectionSelected: false, arrTblContent: [InnerTableData(isSelected: false),InnerTableData(isSelected: false),InnerTableData(isSelected: false)]),
-        MainData(isCollectionSelected: false, arrTblContent: [InnerTableData(isSelected: false),InnerTableData(isSelected: false),InnerTableData(isSelected: false),InnerTableData(isSelected: false),InnerTableData(isSelected: false),InnerTableData(isSelected: false)]),
-        MainData(isCollectionSelected: false, arrTblContent: [InnerTableData(isSelected: false),InnerTableData(isSelected: false),InnerTableData(isSelected: false),InnerTableData(isSelected: false),InnerTableData(isSelected: false)])
+        MainData(isCollectionSelected: false, arrTblContent: [InnerTableData(isSelected: false)]),
+        MainData(isCollectionSelected: false, arrTblContent: [InnerTableData(isSelected: false)]),
+        MainData(isCollectionSelected: false, arrTblContent: [InnerTableData(isSelected: false),InnerTableData(isSelected: false)]),
+        MainData(isCollectionSelected: false, arrTblContent: [InnerTableData(isSelected: false)])
     ]
     
     override func viewDidLoad() {
@@ -56,6 +56,7 @@ extension ViewController : MainCollectionCellDelegate {
     func didTapAtNestedTableIndex(collectionIndex: Int, tableIndex: Int) {
         if var arrTbl = self.arrMainData[collectionIndex].arrTblContent {
             arrTbl[tableIndex].isSelected = !arrTbl[tableIndex].isSelected
+            arrMainData[collectionIndex].isCollectionSelected = arrTbl[tableIndex].isSelected
             arrMainData[collectionIndex].arrTblContent = arrTbl
         }
         mainCollectionVw.reloadData()
@@ -64,7 +65,7 @@ extension ViewController : MainCollectionCellDelegate {
 
 
 struct MainData {
-    let isCollectionSelected:Bool
+    var isCollectionSelected:Bool
     var arrTblContent:[InnerTableData]?
 }
 struct InnerTableData {
